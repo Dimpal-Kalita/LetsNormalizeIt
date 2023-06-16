@@ -94,14 +94,14 @@ hr {
   margin-top: 0.5rem;
 }
 
-@media screen and (max-width: 54rem) {
+@media screen and (max-width: 850px) {
   .sb__footer-heading h1 {
     font-size: 1.8rem;
     line-height: 3.1rem;
   }
 }
 
-@media screen and (max-width: 34rem) {
+@media screen and (max-width: 550px) {
   .sb__footer-heading h1 {
     font-size: 2.1rem;
     line-height: 2.5rem;
@@ -131,7 +131,7 @@ hr {
   }
 }
 
-@media screen and (max-width: 28rem) {
+@media screen and (max-width: 400px) {
   .sb__footer-heading h1 {
     font-size: 1.8rem;
     line-height: 2.5rem;
