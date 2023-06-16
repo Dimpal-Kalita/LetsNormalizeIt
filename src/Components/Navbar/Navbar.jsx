@@ -103,7 +103,7 @@ const Navbar = () => {
             color={secondary}
           >
             {" "}
-            Normalise{" "}
+            Normalize{" "}
           </Typography>
           <Typography
             variant="h4"
