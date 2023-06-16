@@ -1,5 +1,4 @@
-import React from "react";
-import { FaDiscord, FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
 import "./Footer.css";
 import { Box, TextField } from "@mui/material";
 
@@ -66,6 +65,7 @@ const Footer = () => {
                 sx={{
                   color: "blue",
                   background: "white",
+                  width: "140%",
                 }}
                 rows={2}
                 fullWidth
@@ -74,7 +74,7 @@ const Footer = () => {
             </Box>
             <div className="socialmedia">
               <p>
-                <FaDiscord className="icons" style={{ height: 25, width: 25 }} />
+                <FaGithub className="icons" style={{ height: 25, width: 25 }} />
               </p>
               <p>
                 {" "}
@@ -83,6 +83,11 @@ const Footer = () => {
               <p>
                 {" "}
                 <FaYoutube className="icons" style={{ height: 25, width: 25 }} />
+              </p>
+
+              <p>
+                {" "}
+                <FaLinkedin className="icons" style={{ height: 25, width: 25 }} />
               </p>
               <p>
                 {" "}
