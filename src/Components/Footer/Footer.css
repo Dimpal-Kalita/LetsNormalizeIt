@@ -17,7 +17,7 @@
   align-items: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 98%;
+  width: 95%;
   text-align: left;
   margin-bottom: 1.5rem;
 }
@@ -43,7 +43,7 @@ a {
 }
 
 .socialmedia {
-  width: 120%;
+  width: 140%;
   margin: 0.5rem 0;
 }
 
