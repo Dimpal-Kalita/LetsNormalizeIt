@@ -1,31 +1,144 @@
-import { Button } from "../../Components";
-import { useFetchOnAction } from "../../Hooks";
+import {
+  Grid,
+  Card,
+  Avatar,
+  CardContent,
+  Typography,
+  CardActions,
+  Button,
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import MaleIcon from "@mui/icons-material/Male";
+import FemaleIcon from "@mui/icons-material/Female";
+import TransgenderIcon from "@mui/icons-material/Transgender";
 
-import style from "./Home.module.scss";
+const styles = {
+  heroContainer: {
+    height: 800,
+    backgroundImage: `url(${"../../src/assets/images/its.gif"})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
+};
+
+const useStyles = makeStyles(() => ({
+  cardContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  cardStyle: {
+    backgroundColor: "#FADADA",
+    borderRadius: 10,
+    boxShadow: "#e5c9e4",
+    transition: "0.3s",
+    padding: 16,
+    marginBottom: 70,
+    marginTop: 70,
+    "&:hover": {
+      transform: "scale(1.05)",
+      boxShadow: "0 0 11px rgba(33,33,33,.2)",
+    },
+  },
+  avatar: {
+    marginRight: "12px",
+    backgroundColor: "#331b71",
+  },
+}));
 
 const Home = () => {
-  const [fetchData, fetchFunc] = useFetchOnAction();
-
-  const { data, loading, error } = fetchData;
-
-  const handleClick = () => {
-    fetchFunc("/db/demo.json");
-  };
-
+  const classes = useStyles();
   return (
-    <main className={style.home}>
-      {loading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <>
-          <h1>Home Page</h1>
-          {error ? <h2 className={style.error}>{error}</h2> : <h2>{data?.msg}</h2>}
-          <Button type="button" onClick={handleClick}>
-            Health Check
-          </Button>
-        </>
-      )}
-    </main>
+    <>
+      <Grid
+        container
+        direction="column"
+        justify="flex-end"
+        alignItems="right"
+        style={styles.heroContainer}
+      ></Grid>
+
+      <div style={{ padding: 3 }}>
+        <Grid container spacing={2} justifyContent="center" alignItems="center">
+          <Grid item xs={12} sm={6} md={4} className={classes.cardContainer}>
+            <Card sx={{ maxWidth: 345 }} className={classes.cardStyle}>
+              <CardContent>
+                <Avatar className={classes.avatar}>
+                  <MaleIcon />
+                </Avatar>
+                <Typography variant="h5" component="div">
+                  Male
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Let’s be honest, sex can get messy. It’s easy to forget about
+                  cleanliness when you’re in the moment, but being aware of your hygiene
+                  before, during, and after sex can minimize the risk of STIs and other
+                  health concerns. Plus, being clean is just sexy!.
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small">Share</Button>
+                <Button
+                  size="small"
+                  component="a"
+                  href="../../src/assets/docs-page.html"
+                  color="primary"
+                  target="_blank"
+                >
+                  Learn More
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={4} className={classes.cardContainer}>
+            <Card sx={{ maxWidth: 345 }} className={classes.cardStyle}>
+              <CardContent>
+                <Avatar className={classes.avatar}>
+                  <FemaleIcon />
+                </Avatar>
+                <Typography variant="h5" component="div">
+                  Female
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Just like menstruation, vaginal hygiene is a taboo subject in India.
+                  Many women till date refrain from talking or sharing tips on how to
+                  maintain feminine hygiene. It is important to know about vaginal hygiene
+                  to keep your genitals clean and your reproductive tract healthy.
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small">Share</Button>
+                <Button size="small">Learn More</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} sm={6} md={4} className={classes.cardContainer}>
+            <Card sx={{ maxWidth: 345 }} className={classes.cardStyle}>
+              <CardContent>
+                <Avatar className={classes.avatar}>
+                  <TransgenderIcon />
+                </Avatar>
+                <Typography variant="h5" component="div">
+                  Transgender
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Discovering your sexuality can be really exciting, and you may be
+                  exploring new things, or with new parts of your body. Wherever you are
+                  in your transition, and whether you have decided to have surgery or not,
+                  you are entitled to have sex that is safe and enjoyable.
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small">Share</Button>
+                <Button size="small">Learn More</Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        </Grid>
+      </div>
+    </>
   );
 };
 
