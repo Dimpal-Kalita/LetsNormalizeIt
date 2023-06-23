@@ -6,11 +6,14 @@ import {
   Typography,
   CardActions,
   Button,
+  Fab,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import MaleIcon from "@mui/icons-material/Male";
 import FemaleIcon from "@mui/icons-material/Female";
 import TransgenderIcon from "@mui/icons-material/Transgender";
+
+import BotChat from "../Bot/Bot";
 
 const styles = {
   heroContainer: {
@@ -50,6 +53,18 @@ const Home = () => {
   const classes = useStyles();
   return (
     <>
+      <Fab
+        color="secondary"
+        aria-label="Chat"
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          zIndex: 9999,
+        }}
+      >
+        <BotChat />
+      </Fab>
       <Grid
         container
         direction="column"

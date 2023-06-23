@@ -1,23 +1,36 @@
-import { useState } from "react";
-
-import { Box, Typography, TextField, Button } from "@mui/material";
-
+import React, { useState } from "react";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  TextField,
+  Button,
+  Typography,
+  Box,
+  Avatar,
+} from "@mui/material";
+import ChatIcon from "@mui/icons-material/Chat";
+import SendIcon from "@mui/icons-material/Send";
 import uniqueId from "lodash/uniqueId";
+
+import AssistantIcon from "@mui/icons-material/Assistant";
+import PersonIcon from "@mui/icons-material/Person";
 
 const API_KEY = import.meta.env.VITE_API_BOT;
 
 const systemMessage = {
   role: "system",
-  content: "Explain query such that it helps in maintaing users mental and sexual health",
+  content:
+    "Explain query such that it helps in maintaining users mental and sexual health",
 };
 
-const Bot = () => {
+const BotChat = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
-
   const [messages, setMessages] = useState([
     {
-      message: "Hello, Ask me anything!",
+      message: "Hello, ask me anything!",
       sentTime: "just now",
       sender: "Assistant",
     },
@@ -69,38 +82,77 @@ const Bot = () => {
     ];
     setMessages(newMessages);
     await askGPT(newMessages);
-    // console.log(messages);
+    setUserInput("");
   };
+
+  const openChatWindow = () => {
+    setIsOpen(true);
+  };
+
+  const closeChatWindow = () => {
+    setIsOpen(false);
+    setMessages([]);
+  };
+
   return (
     <>
-      <Box sx={{ display: "flex", m: 10, justifyContent: "center" }}>
-        <Typography variant="h5">Bot</Typography>
-        <TextField
-          id="userInput"
-          label="userInput"
-          onChange={(e) => setUserInput(e.target.value)}
-          variant="outlined"
-        />
-        <Button variant="contained" onClick={(e) => handleSendData(e)}>
-          Submit
-        </Button>
-      </Box>
-      <Box>
-        {messages.map((messageObject) => {
-          return (
+      <ChatIcon onClick={openChatWindow} sx={{ width: "4rem", height: "4rem" }} />
+
+      <Dialog open={isOpen} onClose={closeChatWindow} maxWidth="sm" fullWidth>
+        <DialogTitle>Chat Bot</DialogTitle>
+        <DialogContent dividers>
+          {messages.map((message) => (
             <Box
               key={uniqueId()}
-              sx={{ display: "flex", m: 10, justifyContent: "center" }}
+              display="flex"
+              alignItems="center"
+              justifyContent={message.sender === "Assistant" ? "flex-start" : "flex-end"}
+              marginBottom={2}
             >
-              <Typography variant="h5">{messageObject.sender}: </Typography>
-              <Typography variant="h5">{messageObject.message}</Typography>
+              {message.sender === "Assistant" ? (
+                <Avatar>
+                  <AssistantIcon />
+                </Avatar>
+              ) : (
+                <Avatar>
+                  <PersonIcon />
+                </Avatar>
+              )}
+              <Typography
+                variant="body1"
+                margin={2}
+                color={message.sender === "Assistant" ? "primary" : "secondary"}
+              >
+                {message.message}
+              </Typography>
             </Box>
-          );
-        })}
-        {loading && <Typography variant="h5">Loading...</Typography>}
-      </Box>
+          ))}
+        </DialogContent>
+        <form onSubmit={handleSendData}>
+          <Box display="flex" alignItems="center" padding={2}>
+            <TextField
+              variant="outlined"
+              fullWidth
+              value={userInput}
+              onChange={(e) => setUserInput(e.target.value)}
+              disabled={loading}
+              label="Type a message..."
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              disabled={loading}
+              endIcon={<SendIcon />}
+              sx={{ marginLeft: 2, boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)" }}
+            >
+              Send
+            </Button>
+          </Box>
+        </form>
+      </Dialog>
     </>
   );
 };
 
-export default Bot;
+export default BotChat;
