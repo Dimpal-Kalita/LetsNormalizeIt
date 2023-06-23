@@ -8,6 +8,7 @@ import {
   Typography,
   Box,
   Avatar,
+  LinearProgress,
 } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
 import SendIcon from "@mui/icons-material/Send";
@@ -21,7 +22,7 @@ const API_KEY = import.meta.env.VITE_API_BOT;
 const systemMessage = {
   role: "system",
   content:
-    "Explain query such that it helps in maintaining users mental and sexual health",
+    "Explain query such that it helps in maintaining users health and make sure every query has a Fact related to hygiene ",
 };
 
 const BotChat = () => {
@@ -128,6 +129,7 @@ const BotChat = () => {
             </Box>
           ))}
         </DialogContent>
+        {loading && <LinearProgress color="success" />}
         <form onSubmit={handleSendData}>
           <Box display="flex" alignItems="center" padding={2}>
             <TextField
