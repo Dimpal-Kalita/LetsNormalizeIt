@@ -12,6 +12,7 @@ import { makeStyles } from "@mui/styles";
 import MaleIcon from "@mui/icons-material/Male";
 import FemaleIcon from "@mui/icons-material/Female";
 import TransgenderIcon from "@mui/icons-material/Transgender";
+import { Link } from "react-router-dom";
 
 import BotChat from "../Bot/Bot";
 
@@ -93,14 +94,8 @@ const Home = () => {
               </CardContent>
               <CardActions>
                 <Button size="small">Share</Button>
-                <Button
-                  size="small"
-                  component="a"
-                  href="../../src/assets/docs-page.html"
-                  color="primary"
-                  target="_blank"
-                >
-                  Learn More
+                <Button>
+                  <Link to="/male">Learn More</Link>
                 </Button>
               </CardActions>
             </Card>
@@ -124,7 +119,9 @@ const Home = () => {
               </CardContent>
               <CardActions>
                 <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
+                <Button size="small">
+                  <Link to="/female">Learn More</Link>
+                </Button>
               </CardActions>
             </Card>
           </Grid>
@@ -147,7 +144,9 @@ const Home = () => {
               </CardContent>
               <CardActions>
                 <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
+                <Button size="small">
+                  <Link to="/transgender">Learn More</Link>
+                </Button>
               </CardActions>
             </Card>
           </Grid>
