@@ -102,7 +102,7 @@ hr {
 }
 
 @media screen and (max-width: 700px) {
-  .footer{
+  .footer {
     width: 100%;
     margin-right: 0rem;
   }
@@ -136,7 +136,6 @@ hr {
 }
 
 @media screen and (max-width: 400px) {
-  
   .sb__footer-heading h1 {
     font-size: 1.8rem;
     line-height: 2.5rem;
@@ -144,15 +143,15 @@ hr {
   .sb__footer-links {
     width: 100%;
   }
-  .sb__footer_{
+  .sb__footer_ {
     width: 100%;
     margin-right: 0rem;
   }
-  .footer{
+  .footer {
     width: 100%;
     margin-right: 0rem;
   }
-  .sb__footer section__padding{
+  .sb__footer section__padding {
     width: 100%;
     margin-right: 0rem;
   }
