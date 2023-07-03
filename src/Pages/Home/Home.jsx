@@ -7,23 +7,15 @@ import {
   CardActions,
   Button,
   Fab,
+  Link,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import MaleIcon from "@mui/icons-material/Male";
 import FemaleIcon from "@mui/icons-material/Female";
 import TransgenderIcon from "@mui/icons-material/Transgender";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import BotChat from "../Bot/Bot";
-
-const styles = {
-  heroContainer: {
-    height: 800,
-    backgroundImage: `url(${"../../src/assets/images/its.gif"})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  },
-};
 
 const useStyles = makeStyles(() => ({
   cardContainer: {
@@ -66,13 +58,10 @@ const Home = () => {
       >
         <BotChat />
       </Fab>
-      <Grid
-        container
-        direction="column"
-        justify="flex-end"
-        alignItems="right"
-        style={styles.heroContainer}
-      ></Grid>
+
+      <Grid>
+        <img src="../../src/assets/images/its.gif" alt="bgImage" width="100%"></img>
+      </Grid>
 
       <div style={{ padding: 3 }}>
         <Grid container spacing={2} justifyContent="center" alignItems="center">
@@ -93,9 +82,11 @@ const Home = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">Share</Button>
-                <Button>
-                  <Link to="/male">Learn More</Link>
+                {/* <Button size="small">Share</Button> */}
+                <Button primary>
+                  <Link href="/male" color="inherit" underline="none">
+                    Learn More
+                  </Link>
                 </Button>
               </CardActions>
             </Card>
@@ -118,9 +109,11 @@ const Home = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">Share</Button>
+                {/* <Button size="small">Share</Button> */}
                 <Button size="small">
-                  <Link to="/female">Learn More</Link>
+                  <Link href="/female" color="inherit" underline="none">
+                    Learn More
+                  </Link>
                 </Button>
               </CardActions>
             </Card>
@@ -143,9 +136,11 @@ const Home = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">Share</Button>
+                {/* <Button size="small">Share</Button> */}
                 <Button size="small">
-                  <Link to="/transgender">Learn More</Link>
+                  <Link href="/transgender" color="inherit" underline="none">
+                    Learn More
+                  </Link>
                 </Button>
               </CardActions>
             </Card>
