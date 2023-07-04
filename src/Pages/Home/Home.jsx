@@ -83,7 +83,7 @@ const Home = () => {
               </CardContent>
               <CardActions>
                 {/* <Button size="small">Share</Button> */}
-                <Button primary>
+                <Button size="small">
                   <Link href="/male" color="inherit" underline="none">
                     Learn More
                   </Link>

@@ -1,23 +1,48 @@
+import { useEffect, useState } from "react";
+
 import { Routes, Route } from "react-router-dom";
 
-import { useRhinoValue } from "react-rhino";
+import { useRhinoState } from "react-rhino";
 
 import { Home, Error } from "./Pages";
 
 import { Footer } from "./Components";
 
+// for not signed in
 import Navbar from "./Components/LoggedOut/Navbar/Navbar";
 import Signin from "./Components/LoggedOut/Register/Signin";
 import Signup from "./Components/LoggedOut/Register/Signup";
 import ForgotPassword from "./Components/LoggedOut/Register/ForgotPassword";
-
+import OutBlogs from "./Components/LoggedOut/Blog/Blogs";
+// Always
 import MaleArticle from "./Components/Articles/MaleArticle";
 import FemaleArticle from "./Components/Articles/FemaleArticle";
 import TransgenderArticle from "./Components/Articles/TransgenderArticle";
 import Bot from "./Pages/Bot/Bot";
 
+// for Signed In
+
+import InNavbar from "./Components/LoggedIn/Navbar/Navbar";
+import InBlogs from "./Components/LoggedIn/Blog/Blogs";
+import MyBlogs from "./Components/LoggedIn/Blog/MyBlog";
+
 const App = () => {
-  const id = useRhinoValue("id");
+  const [id, setid] = useRhinoState("id");
+  const [cachedValue, setCachedValue] = useState("");
+
+  useEffect(() => {
+    // Read the cached value on component mount
+    const cachedData = localStorage.getItem("cachedValue");
+    if (cachedData) {
+      setCachedValue(cachedData);
+      setid(cachedData);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Store the updated id value in local storage
+    localStorage.setItem("cachedValue", id);
+  }, [id]);
 
   return (
     <div>
@@ -33,12 +58,13 @@ const App = () => {
             <Route path="/male" element={<MaleArticle />} />
             <Route path="/female" element={<FemaleArticle />} />
             <Route path="/transgender" element={<TransgenderArticle />} />
+            <Route path="/blog" element={<OutBlogs />} />
           </Routes>
           <Footer />
         </>
       ) : (
         <>
-          <Navbar />
+          <InNavbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Error />} />
@@ -46,6 +72,8 @@ const App = () => {
             <Route path="/male" element={<MaleArticle />} />
             <Route path="/female" element={<FemaleArticle />} />
             <Route path="/transgender" element={<TransgenderArticle />} />
+            <Route path="/blog" element={<InBlogs />} />
+            <Route path="/myblog" element={<MyBlogs />} />
           </Routes>
           <Footer />
         </>
