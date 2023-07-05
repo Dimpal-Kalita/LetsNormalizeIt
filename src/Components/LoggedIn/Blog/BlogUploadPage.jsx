@@ -59,7 +59,9 @@ const BlogUploadPage = () => {
       user: id,
     };
 
-    axios.post("http://localhost:8080/api/blog/add", blogData).catch((e) => setError(e));
+    axios
+      .post("http://localhost:8080/api/blog/add", blogData)
+      .catch((e) => setError(e.message));
     navigate("/myblog");
   };
 

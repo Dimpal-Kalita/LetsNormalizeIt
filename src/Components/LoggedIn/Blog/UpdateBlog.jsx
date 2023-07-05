@@ -71,7 +71,7 @@ const UpdateBlog = () => {
 
     axios
       .post(`http://localhost:8080/api/blog/update/${id}`, blogData)
-      .catch((e) => setError(e));
+      .catch((e) => setError(e.message));
     navigate("/myblog");
   };
 
