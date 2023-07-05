@@ -26,7 +26,7 @@ const Blog = (prop) => {
   };
   const deleteRequest = async () => {
     const res = await axios
-      .delete(`http://localhost:5000/api/blog/${id}`)
+      .delete(`http://localhost:8080/api/blog/${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;

@@ -33,6 +33,10 @@ const navItems = [
     name: "MyBlog",
     path: "/myblog",
   },
+  {
+    name: "Add Blog",
+    path: "/blogupload",
+  },
 ];
 
 const ModAppBar = styled(AppBar)`

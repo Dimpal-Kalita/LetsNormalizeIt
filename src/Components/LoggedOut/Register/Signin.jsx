@@ -45,11 +45,15 @@ const Signin = () => {
       setFill(true);
       return;
     }
+    if (user.password.length < 8) {
+      setError("Password must be atleast 8 characters long");
+      return;
+    }
     setFill(false);
     sendRequest()
       .then((data) => setnewid(data.user._id))
       .then(() => navigate("/"));
-    setError("Username or Password may be incorrect");
+    setError("Email or Password may be incorrect");
   };
 
   return (

@@ -23,11 +23,11 @@ const Blog = (prop) => {
 
   const navigate = useNavigate();
   const handleEdit = () => {
-    navigate(`/myBlogs/${id}`);
+    navigate(`/blog/update/${id}`);
   };
   const deleteRequest = async () => {
     const res = await axios
-      .delete(`http://localhost:5000/api/blog/${id}`)
+      .delete(`http://localhost:8080/api/blog/${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;
@@ -35,7 +35,7 @@ const Blog = (prop) => {
   const handleDelete = () => {
     deleteRequest()
       .then(() => navigate("/"))
-      .then(() => navigate("/blogs"));
+      .then(() => navigate("/blog"));
   };
   return (
     <Box>

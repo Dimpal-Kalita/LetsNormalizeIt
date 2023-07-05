@@ -49,6 +49,10 @@ const Signup = () => {
       setfill(true);
       return;
     }
+    if (user.password.length < 8) {
+      setError("Password must be atleast 8 characters long");
+      return;
+    }
     setfill(false);
     sendRequest()
       .then((data) => setid(data.user._id))

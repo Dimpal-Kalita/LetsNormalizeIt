@@ -25,6 +25,8 @@ import Bot from "./Pages/Bot/Bot";
 import InNavbar from "./Components/LoggedIn/Navbar/Navbar";
 import InBlogs from "./Components/LoggedIn/Blog/Blogs";
 import MyBlogs from "./Components/LoggedIn/Blog/MyBlog";
+import BlogUploadPage from "./Components/LoggedIn/Blog/BlogUploadPage";
+import UpdateBlog from "./Components/LoggedIn/Blog/UpdateBlog";
 
 const App = () => {
   const [id, setid] = useRhinoState("id");
@@ -74,6 +76,8 @@ const App = () => {
             <Route path="/transgender" element={<TransgenderArticle />} />
             <Route path="/blog" element={<InBlogs />} />
             <Route path="/myblog" element={<MyBlogs />} />
+            <Route path="/blogupload" element={<BlogUploadPage />} />
+            <Route path="/blog/update/:id" element={<UpdateBlog />} />
           </Routes>
           <Footer />
         </>
