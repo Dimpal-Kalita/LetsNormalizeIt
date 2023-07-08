@@ -183,9 +183,9 @@ const MaleArticle = () => {
     },
     {
       id: 4,
-      question: "How to keep a penis clean",
+      question: "How to keep a penis clean?",
       answer:
-        "1. Gently wash the penis with warm water each day when you&apos;re having a shower or bath. 2. If you have a foreskin, pull it back gently and wash underneath.",
+        "1. Gently wash the penis with warm water each day when you're having a shower or bath. 2. If you have a foreskin, pull it back gently and wash underneath.",
     },
   ];
 

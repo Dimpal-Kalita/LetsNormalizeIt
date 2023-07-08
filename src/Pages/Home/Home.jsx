@@ -59,8 +59,8 @@ const Home = () => {
         <BotChat />
       </Fab>
 
-      <Grid>
-        <img src="../../src/assets/images/its.gif" alt="bgImage" width="100%"></img>
+      <Grid autoFocus>
+        <img src="../../src/assets/images/bg.gif" alt="bgImage" width="100%"></img>
       </Grid>
 
       <div style={{ padding: 3 }}>
