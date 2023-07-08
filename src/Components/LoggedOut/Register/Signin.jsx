@@ -13,24 +13,47 @@ import {
 } from "@mui/material";
 import { LockOutlined } from "@mui/icons-material";
 
+import { useRhinoState } from "react-rhino";
+import axios from "axios";
+
+import { useNavigate } from "react-router-dom";
+
 const Signin = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const [fill, setFill] = useState(false);
+  const [newid, setnewid] = useRhinoState("id");
+  const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   const onValueChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
+
+  const sendRequest = async (type = "login") => {
+    const res = await axios
+      .post(`http://localhost:8080/api/user/${type}`, user)
+      .catch((err) => console.log(err));
+
+    const data = await res.data;
+    return data;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user.email === "" || user.password === "") {
       setFill(true);
       return;
     }
+    if (user.password.length < 8) {
+      setError("Password must be atleast 8 characters long");
+      return;
+    }
     setFill(false);
-    console.log({
-      email: user.email,
-      password: user.password,
-    });
+    sendRequest()
+      .then((data) => setnewid(data.user._id))
+      .then(() => navigate("/"));
+    setError("Email or Password may be incorrect");
   };
 
   return (
@@ -48,7 +71,7 @@ const Signin = () => {
           <LockOutlined />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          SIGN IN
         </Typography>
         <Box component="form" noValidate sx={{ mt: 1 }}>
           <TextField
@@ -88,6 +111,12 @@ const Signin = () => {
               * Please fill all the fields{" "}
             </Typography>
           )}
+          {(error && (
+            <Typography component="h1" color="red">
+              * {error}{" "}
+            </Typography>
+          )) ||
+            newid}
           <Grid container>
             <Grid item xs>
               <Link href="/forgotpassword" variant="body2">
