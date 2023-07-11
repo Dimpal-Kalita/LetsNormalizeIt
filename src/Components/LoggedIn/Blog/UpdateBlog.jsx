@@ -1,8 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { TextField, Button, styled, Container, Typography } from "@mui/material";
+import { Box, TextField, Button, styled, Container, Typography } from "@mui/material";
 import axios from "axios";
 
 import { useNavigate, useParams } from "react-router-dom";
+
+const Image = styled(Box)`
+  width: 100%;
+  background: url("../../../src/assets/banners/img2 (4).jpg") center/120% repeat-x #000;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Heading = styled(Typography)`
+  font-size: 70px;
+  color: #ffffff;
+  line-height: 1;
+`;
 
 const StyledContainer = styled(Container)`
   margin-top: 5rem;
@@ -76,33 +92,39 @@ const UpdateBlog = () => {
   };
 
   return (
-    <StyledContainer injectFirst>
-      <StyledTextField
-        label="Title"
-        value={title}
-        onChange={handleTitleChange}
-        fullWidth
-      />
-      <StyledTextField
-        label="Description"
-        value={description}
-        onChange={handleDescriptionChange}
-        fullWidth
-        multiline
-        rows={4}
-      />
-      <StyledTextField
-        label="Image Link"
-        value={imageLink}
-        onChange={handleImageLinkChange}
-        fullWidth
-      />
-      {fill && <Typography color="red">* Please Fill all the fields</Typography>}
-      {error && <Typography color="red">* {error}</Typography>}
-      <StyledButton variant="contained" color="primary" onClick={handleUpload}>
-        Update
-      </StyledButton>
-    </StyledContainer>
+    <div>
+      <Image>
+        <Heading>Update your BLOG</Heading>
+      </Image>
+      <StyledContainer injectFirst>
+        <StyledTextField
+          label="Title"
+          value={title}
+          onChange={handleTitleChange}
+          fullWidth
+        />
+        <StyledTextField
+          label="Description"
+          value={description}
+          onChange={handleDescriptionChange}
+          fullWidth
+          multiline
+          rows={4}
+        />
+        <StyledTextField
+          label="Image Link"
+          value={imageLink}
+          onChange={handleImageLinkChange}
+          fullWidth
+        />
+        {fill && <Typography color="red">* Please Fill all the fields</Typography>}
+        {error && <Typography color="red">* {error}</Typography>}
+        <StyledButton variant="contained" color="primary" onClick={handleUpload}>
+          Update
+        </StyledButton>
+      </StyledContainer>
+      <Box marginTop="2rem"></Box>
+    </div>
   );
 };
 

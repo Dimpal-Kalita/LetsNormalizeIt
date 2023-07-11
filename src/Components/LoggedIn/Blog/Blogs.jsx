@@ -1,8 +1,29 @@
 import React, { useEffect, useState } from "react";
 
 import axios from "axios";
-import { Box } from "@mui/material";
+import { Box, styled, Typography } from "@mui/material";
 import Blog from "./BlogsCard";
+
+const Image = styled(Box)`
+  width: 100%;
+  background: url("../../../src/assets/banners/img2 (2).jpg") center/120% repeat-x #000;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Heading = styled(Typography)`
+  font-size: 70px;
+  color: #ffffff;
+  line-height: 1;
+`;
+
+const SubHeading = styled(Typography)`
+  font-size: 20px;
+  font-weight: 500;
+`;
 
 const InBlogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -17,7 +38,16 @@ const InBlogs = () => {
     sendRequest().then((data) => setBlogs(data.blogs));
   }, []);
   // console.log(blogs);
-  return <Box>{blogs && blogs.map((blog) => <Blog key={blog._id} param={blog} />)}</Box>;
+  return (
+    <div>
+      <Image>
+        <Heading>BLOG</Heading>
+        <SubHeading>Lets Normalize It</SubHeading>
+      </Image>
+      <Box>{blogs && blogs.map((blog) => <Blog key={blog._id} param={blog} />)}</Box>
+      <Box marginTop="2rem"></Box>
+    </div>
+  );
 };
 
 export default InBlogs;
