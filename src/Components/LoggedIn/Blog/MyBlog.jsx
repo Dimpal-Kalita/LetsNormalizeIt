@@ -1,9 +1,26 @@
 import React, { useEffect, useState } from "react";
 
 import axios from "axios";
-import { Box } from "@mui/material";
+import { Box, styled, Typography } from "@mui/material";
 import { useRhinoValue } from "react-rhino";
 import Blog from "./BlogsCard";
+
+const Image = styled(Box)`
+  width: 100%;
+  background: url(https://www.wallpapertip.com/wmimgs/23-236943_us-wallpaper-for-website.jpg)
+    center/100% no-repeat #000;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Heading = styled(Typography)`
+  font-size: 70px;
+  color: #ffffff;
+  line-height: 1;
+`;
 
 const MyBlogs = () => {
   const [blogs, setBlogs] = useState([]);
@@ -20,12 +37,18 @@ const MyBlogs = () => {
   }, []);
   // console.log(blogs);
   return (
-    <Box>
-      {blogs &&
-        blogs
-          .filter((blog) => blog.user._id === id)
-          .map((blog) => <Blog key={blog._id} param={blog} />)}
-    </Box>
+    <div>
+      <Image>
+        <Heading>All my Blogs</Heading>
+      </Image>
+      <Box>
+        {blogs &&
+          blogs
+            .filter((blog) => blog.user._id === id)
+            .map((blog) => <Blog key={blog._id} param={blog} />)}
+      </Box>
+      <Box marginTop="2rem"></Box>
+    </div>
   );
 };
 

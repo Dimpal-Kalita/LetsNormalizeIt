@@ -41,10 +41,10 @@ const Blog = (prop) => {
       {" "}
       <Card
         sx={{
-          width: "40%",
+          width: "80%",
           margin: "auto",
-          mt: 2,
-          padding: 2,
+          mt: 1,
+          padding: 1,
           boxShadow: "5px 5px 10px #ccc",
           ":hover": {
             boxShadow: "10px 10px 20px #ccc",
@@ -73,7 +73,7 @@ const Blog = (prop) => {
           }
           title={title}
         />
-        <CardMedia component="img" height="194" image={image} alt="blog image" />
+        <CardMedia component="img" height="130" image={image} alt="blog image" />
 
         <CardContent>
           <hr />
