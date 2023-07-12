@@ -65,6 +65,9 @@ dependencies:
   react-router-dom:
     specifier: ^6.4.3
     version: 6.4.3(react-dom@18.2.0)(react@18.2.0)
+  read-more-react:
+    specifier: ^1.0.10
+    version: 1.0.10
   styled-components:
     specifier: 6.0.0-rc.3
     version: 6.0.0-rc.3(react-dom@18.2.0)(react@18.2.0)
@@ -4643,6 +4646,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
+
+  /read-more-react@1.0.10:
+    resolution: {integrity: sha512-8IRDU/tJX1hLbHjPxJHeUxAhm/wC8RHPSbAA+3mS7Dk13/PJf9ra7Z18apkqqPkENIoEaQI5NqhIMQIa1vOxfw==}
     dev: false
 
   /readdirp@3.6.0:
