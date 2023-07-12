@@ -11,12 +11,28 @@ import {
 
 import { LockOutlined } from "@mui/icons-material";
 
+import axios from "axios";
+
 const ForgotPassword = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const [fill, setFill] = useState(false);
+  const [error, setError] = useState("");
   const onValueChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
+
+  const sendRequest = async (type = "UpdatePassword") => {
+    const res = await axios
+      .post(`http://localhost:8080/api/user/${type}`, user)
+      .catch((err) => console.log(err));
+
+    const data = await res.data;
+    if (data.message === "Password Updated Successfully") {
+      setError("Password Updated Successfully");
+    }
+    return data;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user.email === "" || user.password === "") {
@@ -24,10 +40,11 @@ const ForgotPassword = () => {
       return;
     }
     setFill(false);
-    console.log({
-      email: user.email,
-      password: user.password,
-    });
+    if (user.password.length < 8) {
+      setError("Password must be atleast 8 characters long");
+    }
+    setError("");
+    sendRequest();
   };
 
   return (
@@ -81,6 +98,11 @@ const ForgotPassword = () => {
             Change Password{" "}
           </Button>
         </Box>
+        {error && (
+          <Typography component="h1" color="green">
+            * {error}
+          </Typography>
+        )}
         {fill && (
           <Typography component="h1" color="red">
             * Please fill all the fields{" "}
