@@ -42,7 +42,7 @@ const Blog = (prop) => {
       {" "}
       <Card
         sx={{
-          width: "80%",
+          width: "70%",
           margin: "auto",
           mt: 2,
           padding: 2,
@@ -74,7 +74,7 @@ const Blog = (prop) => {
           }
           title={title}
         />
-        <CardMedia component="img" height="150" image={image} alt="blog image" />
+        <CardMedia component="img" height="180" image={image} alt="blog image" />
 
         <CardContent>
           <hr />

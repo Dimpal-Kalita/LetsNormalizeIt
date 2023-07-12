@@ -30,6 +30,10 @@ const navItems = [
     path: "/blog",
   },
   {
+    name: "Updates",
+    path: "https://www.cdc.gov/sexualhealth/Default.html",
+  },
+  {
     name: "MyBlog",
     path: "/myblog",
   },
@@ -90,7 +94,12 @@ const InNavbar = () => {
       <List>
         {navItems.map((item) => (
           <ListItem key={uniqueId()} disablePadding>
-            <ListItemButton component={Link} to={item.path} variant="contained">
+            <ListItemButton
+              component={Link}
+              to={item.path}
+              variant="contained"
+              target="blank"
+            >
               <ModListItemText primary={item.name} />
             </ListItemButton>
           </ListItem>
@@ -145,7 +154,7 @@ const InNavbar = () => {
 
           <ModBox sx={{ display: { xs: "none", sm: "flex" } }}>
             {navItems.map((item) => (
-              <Link key={uniqueId()} href={item.path} variant="body2">
+              <Link key={uniqueId()} href={item.path} variant="body2" target="blank">
                 <ModButton>{item.name}</ModButton>
               </Link>
             ))}

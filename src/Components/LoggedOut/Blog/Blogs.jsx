@@ -22,7 +22,6 @@ const Heading = styled(Typography)`
 
 const SubHeading = styled(Typography)`
   font-size: 20px;
-  background: #ffffff;
 `;
 
 const OutBlogs = () => {
