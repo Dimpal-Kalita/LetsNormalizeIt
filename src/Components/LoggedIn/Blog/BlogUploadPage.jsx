@@ -56,11 +56,6 @@ const Heading = styled(Typography)`
   line-height: 1;
 `;
 
-// const SubHeading = styled(Typography)`
-//     font-size: 20px;
-//     background: #FFFFFF;
-// `;
-
 const BlogUploadPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -142,7 +137,7 @@ const BlogUploadPage = () => {
           rows={4}
         />
 
-        <Typography variant="h6">Select a banner</Typography>
+        <Typography variant="h6">Select a banner for your blog</Typography>
         <Container
           style={{
             display: "flex",

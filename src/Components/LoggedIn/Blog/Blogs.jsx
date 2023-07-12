@@ -6,7 +6,8 @@ import Blog from "./BlogsCard";
 
 const Image = styled(Box)`
   width: 100%;
-  background: url("../../../src/assets/banners/img2 (2).jpg") center/120% repeat-x #000;
+  background: url("https://res.cloudinary.com/dwzws9wi7/image/upload/v1689160529/LetsNormalizeIt_MainBlogBanners/dhi5idcfozdvb7jumybs.jpg")
+    center/120% repeat-x #000;
   height: 50vh;
   display: flex;
   flex-direction: column;

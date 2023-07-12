@@ -24,7 +24,6 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
   },
   cardStyle: {
-    backgroundColor: "#FADADA",
     borderRadius: 10,
     boxShadow: "#e5c9e4",
     transition: "0.3s",
