@@ -7,11 +7,16 @@ import {
   styled,
   Container,
   Typography,
+  Checkbox,
+  FormControlLabel,
 } from "@mui/material";
 import axios from "axios";
 
 import { useRhinoValue } from "react-rhino";
 import { useNavigate } from "react-router-dom";
+import { set } from "lodash";
+
+import imageData from "../../../db/imageData.json";
 
 const StyledContainer = styled(Container)`
   margin-top: 5rem;
@@ -59,12 +64,17 @@ const Heading = styled(Typography)`
 const BlogUploadPage = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [imageLink, setImageLink] = useState("../../../src/assets/banners/img2 (1).jpg");
+  const [imageLink, setImageLink] = useState(
+    "https://res.cloudinary.com/dfriijrmr/image/upload/v1689102781/LetsNormaliseIt/top-view-bath-concept-accessories-with-copy-space_xgjsj0.jpg"
+  );
   const id = useRhinoValue("id");
+
+  const [imagestate, setImageState] = useState(imageData);
 
   const [fill, setFill] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };
@@ -73,10 +83,26 @@ const BlogUploadPage = () => {
     setDescription(event.target.value);
   };
 
-  const handleImageLinkChange = (event) => {
-    setImageLink(event.target.value);
+  const ToggleValues = (imgid) => {
+    const newImageState = imagestate.map((item) => {
+      if (item.id === imgid && item.checked === false) {
+        return {
+          ...item,
+          checked: true,
+        };
+      }
+      if (item.id !== imgid) {
+        return {
+          ...item,
+          checked: false,
+        };
+      }
+      return item;
+    });
+    const newImageLink = newImageState.filter((item) => item.checked === true);
+    newImageLink.map((item) => setImageLink(item.img));
+    setImageState(newImageState);
   };
-
   const handleUpload = () => {
     if (title === "" || description === "" || imageLink === "") {
       setFill(true);
@@ -115,12 +141,33 @@ const BlogUploadPage = () => {
           multiline
           rows={4}
         />
-        <StyledTextField
-          label="Image Link"
-          value={imageLink}
-          onChange={handleImageLinkChange}
-          fullWidth
-        />
+
+        <Typography variant="h6">Select a banner</Typography>
+        <Container
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            marginTop: "2rem",
+          }}
+        >
+          {imagestate.map((item) => (
+            <FormControlLabel
+              key={item.id}
+              control={
+                <Checkbox checked={item.checked} onClick={() => ToggleValues(item.id)} />
+              }
+              label={
+                <img
+                  src={item.img}
+                  alt="img"
+                  style={{ width: "100%", height: "10rem" }}
+                />
+              }
+            />
+          ))}
+        </Container>
+
         {fill && <Typography color="red">* Please Fill all the fields</Typography>}
         {error && <Typography color="red">* {error}</Typography>}
         <StyledButton variant="contained" color="primary" onClick={handleUpload}>

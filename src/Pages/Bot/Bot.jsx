@@ -17,7 +17,7 @@ import uniqueId from "lodash/uniqueId";
 import AssistantIcon from "@mui/icons-material/Assistant";
 import PersonIcon from "@mui/icons-material/Person";
 
-const API_KEY = import.meta.env.VITE_API_BOT;
+const API_KEY = import.meta.env.VITE_OPENAI_API_BOT;
 
 const systemMessage = {
   role: "system",
@@ -72,7 +72,8 @@ const BotChat = () => {
           },
         ]);
         setLoading(false);
-      });
+      }, 5000);
+    setLoading(false);
   };
 
   const handleSendData = async (e) => {

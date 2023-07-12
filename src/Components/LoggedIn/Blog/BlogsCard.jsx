@@ -14,6 +14,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useRhinoValue } from "react-rhino";
+import ReadMoreReact from "read-more-react";
 
 const Blog = (prop) => {
   const { title, description, image } = prop.param;
@@ -84,7 +85,18 @@ const Blog = (prop) => {
             variant="body2"
             color="text.secondary"
           >
-            <b>{userName}</b> {": "} {description}
+            <b>{userName}</b> {": "}
+            <ReadMoreReact
+              text={description}
+              min={80}
+              ideal={150}
+              max={200}
+              readMoreText={
+                <Typography color="primary">
+                  <b>Read More</b>
+                </Typography>
+              }
+            />
           </Typography>
         </CardContent>
       </Card>

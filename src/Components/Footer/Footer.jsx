@@ -1,134 +1,98 @@
-import { FaGithub, FaLinkedin, FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
-import "./Footer.css";
-import { Box, TextField } from "@mui/material";
+import React from "react";
+import styled from "styled-components";
+import { Typography, Box, Grid, Avatar } from "@mui/material";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+
+const FooterContainer = styled(Box)`
+  background-color: #2a1474;
+  color: #fff;
+  padding: 16px;
+  text-align: center;
+`;
+
+const NamesContainer = styled(Grid)`
+  margin-bottom: 16px;
+`;
+
+const Name = styled(Box)`
+  margin-right: 16px;
+  font-weight: bold;
+`;
+
+const Separator = styled.div`
+  border-top: 1px solid white;
+  margin: 10px 0;
+`;
 
 const Footer = () => {
   return (
-    <div className="footer">
-      <div className="sb__footer section__padding">
-        <div className="sb__footer-links">
-          <div className="sb__footer-links_div">
-            <h1>For Business</h1>
-            <a href="/employer">
-              <p>Employer</p>
-            </a>
-            <a href="/healthplan">
-              <p>healthPlan</p>
-            </a>
-            <a href="/individual">
-              <p>Individual</p>
-            </a>
-          </div>
-
-          <div className="sb__footer-links_div">
-            <h1>Resources</h1>
-            <a href="/resource">
-              <p>Resource Center</p>
-            </a>
-            <a href="/resource">
-              <p>Testimonials</p>
-            </a>
-            <a href="/resource">
-              <p>STV</p>
-            </a>
-          </div>
-
-          <div className="sb__footer-links_div">
-            <h1>Partners</h1>
-            <a href="/employer">
-              <p>Swing Tech</p>
-            </a>
-          </div>
-
-          <div className="sb__footer-links_div">
-            <h1>Company</h1>
-            <a href="/about">
-              <p>About</p>
-            </a>
-            <a href="/press">
-              <p>Press</p>
-            </a>
-            <a href="/career">
-              <p>Career</p>
-            </a>
-            <a href="/contact">
-              <p>Contact</p>
-            </a>
-          </div>
-
-          <div className="sb__footer-links_div">
-            <Box mb={1}>
-              <TextField
-                variant="outlined"
-                multiline
-                placeholder="Get in touch with us"
-                sx={{
-                  color: "blue",
-                  background: "white",
-                  width: "140%",
-                }}
-                rows={2}
-                fullWidth
-                required
-              />
-            </Box>
-            <div className="socialmedia">
-              <p>
-                <FaGithub className="icons" style={{ height: 25, width: 25 }} />
-              </p>
-              <p>
-                {" "}
-                <FaInstagram className="icons" style={{ height: 25, width: 25 }} />
-              </p>
-              <p>
-                {" "}
-                <FaYoutube className="icons" style={{ height: 25, width: 25 }} />
-              </p>
-
-              <p>
-                {" "}
-                <FaLinkedin className="icons" style={{ height: 25, width: 25 }} />
-              </p>
-              <p>
-                {" "}
-                <FaTwitter className="icons" style={{ height: 25, width: 25 }} />
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <hr></hr>
-
-        <div className="sb__footer-below">
-          <div className="sb__footer-copyright">
-            <p>@{new Date().getFullYear()} LetsNormalizeIt. All rights reserved.</p>
-          </div>
-
-          <div className="sb__footer-below-links">
-            <a href="/terms">
-              <div>
-                <p>Terms & Conditions</p>
-              </div>
-            </a>
-            <a href="/privacy">
-              <div>
-                <p>Privacy Policy</p>
-              </div>
-            </a>
-            <a href="/security">
-              <div>
-                <p>Security</p>
-              </div>
-            </a>
-            <a href="/cookie">
-              <div>
-                <p>Cookie Declaration</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <FooterContainer>
+      <NamesContainer container justifyContent="center">
+        <Grid item>
+          <Name>
+            <Typography>Trilasha Mazumder</Typography>
+            <Grid container justifyContent="center" spacing={1}>
+              <Grid item>
+                <a
+                  href="https://github.com/trilasha-mazumder"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Avatar>
+                    <GitHubIcon />
+                  </Avatar>
+                </a>
+              </Grid>
+              <Grid item>
+                <a
+                  href="https://www.linkedin.com/in/trilasha-mazumder"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Avatar>
+                    <LinkedInIcon />
+                  </Avatar>
+                </a>
+              </Grid>
+            </Grid>
+          </Name>
+        </Grid>
+        <Grid item>
+          <Name>
+            <Typography>Dimpal Kalita</Typography>
+            <Grid container justifyContent="center" spacing={1}>
+              <Grid item>
+                <a
+                  href="https://github.com/dimpalkalita"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Avatar>
+                    <GitHubIcon />
+                  </Avatar>
+                </a>
+              </Grid>
+              <Grid item>
+                <a
+                  href="https://www.linkedin.com/in/dimpalkalita"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Avatar>
+                    <LinkedInIcon />
+                  </Avatar>
+                </a>
+              </Grid>
+            </Grid>
+          </Name>
+        </Grid>
+      </NamesContainer>
+      <Separator />
+      <Typography variant="body2" component="p">
+        @2023 LetsNormalizeIt. All rights reserved.
+      </Typography>
+    </FooterContainer>
   );
 };
 

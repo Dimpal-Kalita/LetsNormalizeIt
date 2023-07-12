@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Box, TextField, Button, styled, Container, Typography } from "@mui/material";
+import {
+  Box,
+  TextField,
+  Button,
+  styled,
+  Container,
+  Typography,
+  FormControlLabel,
+  Checkbox,
+} from "@mui/material";
 import axios from "axios";
 
 import { useNavigate, useParams } from "react-router-dom";
+
+import imageData from "../../../db/imageData.json";
 
 const Image = styled(Box)`
   width: 100%;
@@ -46,6 +57,7 @@ const UpdateBlog = () => {
   const [description, setDescription] = useState("");
   const [imageLink, setImageLink] = useState("");
   const { id } = useParams();
+  const [imagestate, setImageState] = useState(imageData);
 
   const [fill, setFill] = useState(false);
   const navigate = useNavigate();
@@ -61,6 +73,22 @@ const UpdateBlog = () => {
     setTitle(data.blog.title);
     setDescription(data.blog.description);
     setImageLink(data.blog.image);
+    const newImageState = imagestate.map((item) => {
+      if (item.img === data.blog.image) {
+        return {
+          ...item,
+          checked: true,
+        };
+      }
+      if (item.img !== data.blog.image) {
+        return {
+          ...item,
+          checked: false,
+        };
+      }
+      return item;
+    });
+    setImageState(newImageState);
   };
 
   const handleTitleChange = (event) => {
@@ -70,8 +98,26 @@ const UpdateBlog = () => {
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
   };
-  const handleImageLinkChange = (event) => {
-    setImageLink(event.target.value);
+
+  const ToggleValues = (imgid) => {
+    const newImageState = imagestate.map((item) => {
+      if (item.id === imgid && item.checked === false) {
+        return {
+          ...item,
+          checked: true,
+        };
+      }
+      if (item.id !== imgid) {
+        return {
+          ...item,
+          checked: false,
+        };
+      }
+      return item;
+    });
+    const newImageLink = newImageState.filter((item) => item.checked === true);
+    newImageLink.map((item) => setImageLink(item.img));
+    setImageState(newImageState);
   };
 
   const handleUpload = () => {
@@ -96,7 +142,7 @@ const UpdateBlog = () => {
       <Image>
         <Heading>Update your BLOG</Heading>
       </Image>
-      <StyledContainer injectFirst>
+      <StyledContainer>
         <StyledTextField
           label="Title"
           value={title}
@@ -111,12 +157,33 @@ const UpdateBlog = () => {
           multiline
           rows={4}
         />
-        <StyledTextField
-          label="Image Link"
-          value={imageLink}
-          onChange={handleImageLinkChange}
-          fullWidth
-        />
+
+        <Typography variant="h6">Select a banner</Typography>
+        <Container
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            marginTop: "2rem",
+          }}
+        >
+          {imagestate.map((item) => (
+            <FormControlLabel
+              key={item.id}
+              control={
+                <Checkbox checked={item.checked} onClick={() => ToggleValues(item.id)} />
+              }
+              label={
+                <img
+                  src={item.img}
+                  alt="img"
+                  style={{ width: "100%", height: "10rem" }}
+                />
+              }
+            />
+          ))}
+        </Container>
+
         {fill && <Typography color="red">* Please Fill all the fields</Typography>}
         {error && <Typography color="red">* {error}</Typography>}
         <StyledButton variant="contained" color="primary" onClick={handleUpload}>
