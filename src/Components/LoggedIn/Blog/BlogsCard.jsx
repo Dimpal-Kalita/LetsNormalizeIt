@@ -7,8 +7,9 @@ import {
   CardMedia,
   IconButton,
   Typography,
+  Grid,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useNavigate } from "react-router-dom";
@@ -38,6 +39,45 @@ const Blog = (prop) => {
       .then(() => navigate("/"))
       .then(() => navigate("/blog"));
   };
+
+  const [isExpanded, setisExpanded] = useState(false);
+  const handleExpand = () => {
+    setisExpanded(!isExpanded);
+  };
+
+  const truncatedContent = (
+    <Typography>
+      <ReadMoreReact
+        text={description}
+        min={126}
+        ideal={126}
+        max={130}
+        readMoreText={
+          <Typography
+            color="primary"
+            sx={{ "&:hover": { cursor: "pointer" } }}
+            onClick={handleExpand}
+          >
+            <b>Read More</b>
+          </Typography>
+        }
+      />
+    </Typography>
+  );
+
+  const expandedContent = (
+    <Typography>
+      {description}
+      <Typography
+        color="primary"
+        sx={{ "&:hover": { cursor: "pointer" } }}
+        onClick={handleExpand}
+      >
+        <b>Show Less</b>
+      </Typography>
+    </Typography>
+  );
+
   return (
     <Box>
       {" "}
@@ -80,24 +120,15 @@ const Blog = (prop) => {
         <CardContent>
           <hr />
           <br />
-          <Typography
-            //   className={classes.font}
-            variant="body2"
-            color="text.secondary"
-          >
-            <b>{userName}</b> {": "}
-            <ReadMoreReact
-              text={description}
-              min={80}
-              ideal={150}
-              max={200}
-              readMoreText={
-                <Typography color="primary">
-                  <b>Read More</b>
-                </Typography>
-              }
-            />
-          </Typography>
+          <Grid style={{ width: "100%", wordWrap: "break-word" }}>
+            <Typography
+              //   className={classes.font}
+              variant="body2"
+              color="text.secondary"
+            >
+              {isExpanded ? expandedContent : truncatedContent}
+            </Typography>
+          </Grid>
         </CardContent>
       </Card>
     </Box>

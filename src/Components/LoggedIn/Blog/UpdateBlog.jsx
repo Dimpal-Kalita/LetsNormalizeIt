@@ -17,7 +17,8 @@ import imageData from "../../../db/imageData.json";
 
 const Image = styled(Box)`
   width: 100%;
-  background: url("../../../src/assets/banners/img2 (4).jpg") center/120% repeat-x #000;
+  background: url("https://res.cloudinary.com/dwzws9wi7/image/upload/v1689160530/LetsNormalizeIt_MainBlogBanners/fro1nznj4s7eyxwabbgm.jpg")
+    center/120% repeat-x #000;
   height: 50vh;
   display: flex;
   flex-direction: column;
