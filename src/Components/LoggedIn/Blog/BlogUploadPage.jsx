@@ -14,7 +14,6 @@ import axios from "axios";
 
 import { useRhinoValue } from "react-rhino";
 import { useNavigate } from "react-router-dom";
-import { set } from "lodash";
 
 import imageData from "../../../db/imageData.json";
 
