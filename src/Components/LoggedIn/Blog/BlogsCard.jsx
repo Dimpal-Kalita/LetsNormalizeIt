@@ -8,6 +8,7 @@ import {
   IconButton,
   Typography,
   Grid,
+  styled,
 } from "@mui/material";
 import React, { useState } from "react";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
@@ -16,6 +17,15 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useRhinoValue } from "react-rhino";
 import ReadMoreReact from "read-more-react";
+
+const SBox = styled(Box)`
+  .read-more-button {
+    color: #3f51b5;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
 
 const Blog = (prop) => {
   const { title, description, image } = prop.param;
@@ -46,27 +56,19 @@ const Blog = (prop) => {
   };
 
   const truncatedContent = (
-    <Typography>
+    <SBox>
       <ReadMoreReact
         text={description}
         min={126}
         ideal={126}
         max={130}
-        readMoreText={
-          <Typography
-            color="primary"
-            sx={{ "&:hover": { cursor: "pointer" } }}
-            onClick={handleExpand}
-          >
-            <b>Read More</b>
-          </Typography>
-        }
+        readMoreText="Read More"
       />
-    </Typography>
+    </SBox>
   );
 
   const expandedContent = (
-    <Typography>
+    <Box>
       {description}
       <Typography
         color="primary"
@@ -75,7 +77,7 @@ const Blog = (prop) => {
       >
         <b>Show Less</b>
       </Typography>
-    </Typography>
+    </Box>
   );
 
   return (
@@ -121,13 +123,13 @@ const Blog = (prop) => {
           <hr />
           <br />
           <Grid style={{ width: "100%", wordWrap: "break-word" }}>
-            <Typography
+            <Box
               //   className={classes.font}
               variant="body2"
               color="text.secondary"
             >
               {isExpanded ? expandedContent : truncatedContent}
-            </Typography>
+            </Box>
           </Grid>
         </CardContent>
       </Card>

@@ -7,13 +7,26 @@ import {
   CardMedia,
   IconButton,
   Typography,
+  Grid,
+  styled,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useRhinoValue } from "react-rhino";
+import ReadMoreReact from "read-more-react";
+
+const SBox = styled(Box)`
+  .read-more-button {
+    color: red;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+
 const Blog = (prop) => {
   const { title, description, image } = prop.param;
   const userName = prop.param.user.name;
@@ -22,7 +35,7 @@ const Blog = (prop) => {
 
   const navigate = useNavigate();
   const handleEdit = () => {
-    navigate(`/myBlogs/${id}`);
+    navigate(`/blog/update/${id}`);
   };
   const deleteRequest = async () => {
     const res = await axios
@@ -34,17 +47,48 @@ const Blog = (prop) => {
   const handleDelete = () => {
     deleteRequest()
       .then(() => navigate("/"))
-      .then(() => navigate("/blogs"));
+      .then(() => navigate("/blog"));
   };
+
+  const [isExpanded, setisExpanded] = useState(false);
+  const handleExpand = () => {
+    setisExpanded(!isExpanded);
+  };
+
+  const truncatedContent = (
+    <SBox>
+      <ReadMoreReact
+        text={description}
+        min={126}
+        ideal={126}
+        max={130}
+        readMoreText="Read More"
+      />
+    </SBox>
+  );
+
+  const expandedContent = (
+    <Box>
+      {description}
+      <Typography
+        color="primary"
+        sx={{ "&:hover": { cursor: "pointer" } }}
+        onClick={handleExpand}
+      >
+        <b>Show Less</b>
+      </Typography>
+    </Box>
+  );
+
   return (
-    <div>
+    <Box>
       {" "}
       <Card
         sx={{
-          width: "80%",
+          width: "70%",
           margin: "auto",
-          mt: 1,
-          padding: 1,
+          mt: 2,
+          padding: 2,
           boxShadow: "5px 5px 10px #ccc",
           ":hover": {
             boxShadow: "10px 10px 20px #ccc",
@@ -73,21 +117,23 @@ const Blog = (prop) => {
           }
           title={title}
         />
-        <CardMedia component="img" height="130" image={image} alt="blog image" />
+        <CardMedia component="img" height="180" image={image} alt="blog image" />
 
         <CardContent>
           <hr />
           <br />
-          <Typography
-            //   className={classes.font}
-            variant="body2"
-            color="text.secondary"
-          >
-            <b>{userName}</b> {": "} {description}
-          </Typography>
+          <Grid style={{ width: "100%", wordWrap: "break-word" }}>
+            <Box
+              //   className={classes.font}
+              variant="body2"
+              color="text.secondary"
+            >
+              {isExpanded ? expandedContent : truncatedContent}
+            </Box>
+          </Grid>
         </CardContent>
       </Card>
-    </div>
+    </Box>
   );
 };
 

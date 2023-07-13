@@ -104,6 +104,7 @@ const InNavbar = () => {
             </ListItemButton>
           </ListItem>
         ))}
+        <ModButton onClick={handleLogout}>Logout</ModButton>
       </List>
     </Box>
   );

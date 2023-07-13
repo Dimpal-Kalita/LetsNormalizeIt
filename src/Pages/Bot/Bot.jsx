@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -9,6 +9,7 @@ import {
   Box,
   Avatar,
   LinearProgress,
+  Slide,
 } from "@mui/material";
 import ChatIcon from "@mui/icons-material/Chat";
 import SendIcon from "@mui/icons-material/Send";
@@ -29,6 +30,18 @@ const BotChat = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [reminderDialogOpen, setReminderDialogOpen] = useState(true);
+
+  useEffect(() => {
+    const reminderTimeout = setTimeout(() => {
+      if (reminderDialogOpen) setReminderDialogOpen(false);
+      else setReminderDialogOpen(true);
+    }, 5000);
+    return () => {
+      clearTimeout(reminderTimeout);
+    };
+  }, [reminderDialogOpen]);
+
   const [messages, setMessages] = useState([
     {
       message: "Hello, ask me anything!",
@@ -89,6 +102,7 @@ const BotChat = () => {
 
   const openChatWindow = () => {
     setIsOpen(true);
+    setReminderDialogOpen(false);
   };
 
   const closeChatWindow = () => {
@@ -98,10 +112,29 @@ const BotChat = () => {
 
   return (
     <>
+      <Box>
+        <Slide
+          direction="up"
+          in={reminderDialogOpen && !isOpen}
+          position="fixed"
+          bottom={20}
+          right={85}
+          bgcolor="background.paper"
+          boxShadow={4}
+          borderRadius={4}
+          zIndex={9999}
+          p={2}
+        >
+          <Typography variant="body1" color="black" fontWeight={400}>
+            Ask Something
+          </Typography>
+        </Slide>
+      </Box>
+
       <ChatIcon onClick={openChatWindow} sx={{ width: "4rem", height: "4rem" }} />
 
       <Dialog open={isOpen} onClose={closeChatWindow} maxWidth="sm" fullWidth>
-        <DialogTitle>Chat Bot</DialogTitle>
+        <DialogTitle>Ask It</DialogTitle>
         <DialogContent dividers>
           {messages.map((message) => (
             <Box
