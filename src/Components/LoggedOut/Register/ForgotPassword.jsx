@@ -23,7 +23,7 @@ const ForgotPassword = () => {
 
   const sendRequest = async (type = "UpdatePassword") => {
     const res = await axios
-      .post(`http://localhost:8080/api/user/${type}`, user)
+      .post(`https://letsnormalizeit.onrender.com/api/user/${type}`, user)
       .catch((err) => console.log(err));
 
     const data = await res.data;

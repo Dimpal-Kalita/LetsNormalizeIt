@@ -20,7 +20,8 @@ import ReadMoreReact from "read-more-react";
 
 const SBox = styled(Box)`
   .read-more-button {
-    color: red;
+    color: #3f51b5;
+    font-weight: bold;
     &:hover {
       cursor: pointer;
     }
@@ -39,7 +40,7 @@ const Blog = (prop) => {
   };
   const deleteRequest = async () => {
     const res = await axios
-      .delete(`http://localhost:8080/api/blog/${id}`)
+      .delete(`https://letsnormalizeit.onrender.com/api/blog/${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;

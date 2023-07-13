@@ -110,7 +110,7 @@ const BlogUploadPage = () => {
     };
 
     axios
-      .post("http://localhost:8080/api/blog/add", blogData)
+      .post("https://letsnormalizeit.onrender.com/api/blog/add", blogData)
       .catch((e) => setError(e.message));
     navigate("/myblog");
   };

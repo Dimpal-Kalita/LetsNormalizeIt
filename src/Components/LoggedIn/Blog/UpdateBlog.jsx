@@ -69,7 +69,7 @@ const UpdateBlog = () => {
   }, []);
 
   const Loaduserdetails = async () => {
-    const res = await axios.get(`http://localhost:8080/api/blog/${id}`);
+    const res = await axios.get(`https://letsnormalizeit.onrender.com/api/blog/${id}`);
     const data = await res.data;
     setTitle(data.blog.title);
     setDescription(data.blog.description);
@@ -133,7 +133,7 @@ const UpdateBlog = () => {
     };
 
     axios
-      .post(`http://localhost:8080/api/blog/update/${id}`, blogData)
+      .post(`https://letsnormalizeit.onrender.com/api/blog/update/${id}`, blogData)
       .catch((e) => setError(e.message));
     navigate("/myblog");
   };

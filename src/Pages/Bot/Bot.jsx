@@ -34,8 +34,7 @@ const BotChat = () => {
 
   useEffect(() => {
     const reminderTimeout = setTimeout(() => {
-      if (reminderDialogOpen) setReminderDialogOpen(false);
-      else setReminderDialogOpen(true);
+      setReminderDialogOpen(!reminderDialogOpen);
     }, 5000);
     return () => {
       clearTimeout(reminderTimeout);

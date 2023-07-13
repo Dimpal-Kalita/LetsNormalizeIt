@@ -27,7 +27,7 @@ const MyBlogs = () => {
   const id = useRhinoValue("id");
   const sendRequest = async () => {
     const res = await axios
-      .get("http://localhost:8080/api/blog")
+      .get("https://letsnormalizeit.onrender.com/api/blog")
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;
