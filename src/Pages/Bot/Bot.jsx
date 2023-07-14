@@ -23,7 +23,7 @@ const API_KEY = import.meta.env.VITE_OPENAI_API_BOT;
 const systemMessage = {
   role: "system",
   content:
-    "Explain query such that it helps in maintaining users health and make sure every query has a Fact related to hygiene ",
+    "Explain query such that it helps in maintaining users health and make sure every query has a Fact related to hygiene also consider your name as sassy ",
 };
 
 const BotChat = () => {
