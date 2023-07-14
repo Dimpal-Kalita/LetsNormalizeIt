@@ -53,7 +53,7 @@ const Footer = () => {
                 </Grid>
                 <Grid item>
                   <a
-                    href="linkedin.com/in/trilasha-mazumder-51b234224"
+                    href="https://linkedin.com/in/trilasha-mazumder-51b234224"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -64,7 +64,7 @@ const Footer = () => {
                 </Grid>
                 <Grid item>
                   <a
-                    href="linkedin.com/in/dimpal-kalita-819121226"
+                    href="https://linkedin.com/in/dimpal-kalita-819121226"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
