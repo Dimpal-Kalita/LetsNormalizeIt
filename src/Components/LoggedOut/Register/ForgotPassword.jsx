@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 
 import { LockOutlined } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 const BACKEND = import.meta.env.VITE_BACKEND_URL;
@@ -18,6 +19,7 @@ const ForgotPassword = () => {
   const [user, setUser] = useState({ email: "", password: "" });
   const [fill, setFill] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
   const onValueChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -46,6 +48,7 @@ const ForgotPassword = () => {
     }
     setError("");
     sendRequest();
+    navigate("/signin");
   };
 
   return (
