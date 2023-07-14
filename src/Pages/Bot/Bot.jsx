@@ -43,7 +43,7 @@ const BotChat = () => {
 
   const [messages, setMessages] = useState([
     {
-      message: "Hello, ask me anything!",
+      message: "Greetings for the day! How may I help you?",
       sentTime: "just now",
       sender: "Assistant",
     },
@@ -124,8 +124,13 @@ const BotChat = () => {
           zIndex={9999}
           p={2}
         >
-          <Typography variant="body1" color="black" fontWeight={400}>
-            Ask Something
+          <Typography
+            variant="body1"
+            color="black"
+            fontWeight={400}
+            fontFamily="Poppins, sans-serif"
+          >
+            Ask Me Anything
           </Typography>
         </Slide>
       </Box>
@@ -133,7 +138,10 @@ const BotChat = () => {
       <ChatIcon onClick={openChatWindow} sx={{ width: "4rem", height: "4rem" }} />
 
       <Dialog open={isOpen} onClose={closeChatWindow} maxWidth="sm" fullWidth>
-        <DialogTitle>Ask It</DialogTitle>
+        <DialogTitle fontFamily="Poppins, sans-serif">
+          Hi I&apos;m Sassy, your personalised AI chat assistant! Feel free to ask me
+          anything...
+        </DialogTitle>
         <DialogContent dividers>
           {messages.map((message) => (
             <Box

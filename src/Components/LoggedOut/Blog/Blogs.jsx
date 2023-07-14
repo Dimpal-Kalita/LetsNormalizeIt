@@ -4,6 +4,8 @@ import axios from "axios";
 import { Box, styled, Typography } from "@mui/material";
 import Blog from "./BlogsCard";
 
+const BACKEND = import.meta.env.VITE_BACKEND_URL;
+
 const Image = styled(Box)`
   width: 100%;
   background: url("https://res.cloudinary.com/dwzws9wi7/image/upload/v1689160529/LetsNormalizeIt_MainBlogBanners/dhi5idcfozdvb7jumybs.jpg")
@@ -19,18 +21,18 @@ const Heading = styled(Typography)`
   font-size: 70px;
   color: #ffffff;
   line-height: 1;
+  font-family: "Poppins,sans-serif";
 `;
 
 const SubHeading = styled(Typography)`
   font-size: 20px;
+  font-family: "Poppins,sans-serif";
 `;
 
 const OutBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const sendRequest = async () => {
-    const res = await axios
-      .get("https://letsnormalizeit.onrender.com/api/blog")
-      .catch((err) => console.log(err));
+    const res = await axios.get(`${BACKEND}/api/blog`).catch((err) => console.log(err));
     const data = await res.data;
     return data;
   };

@@ -14,6 +14,9 @@ import {
 import { makeStyles } from "@mui/styles";
 import { ArrowBackIos, ArrowForwardIos, InfoOutlined } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
+import images from "../../db/images.json";
+import images2 from "../../db/images2.json";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -104,6 +107,13 @@ const useStyles = makeStyles(() => ({
     fontFamily: "Roboto, sans-serif",
     fontSize: "16px",
   },
+  icongrid: {
+    display: "flex",
+    alignItems: "center",
+  },
+  icon: {
+    marginRight: "0.1rem",
+  },
 }));
 
 const TransgenderArticle = () => {
@@ -116,48 +126,6 @@ const TransgenderArticle = () => {
     marginLeft: "3rem",
   };
   const classes = useStyles();
-
-  const images = [
-    {
-      id: 1,
-      src: "../../src/assets/images/img1.jpeg",
-      alt: "Image 1",
-      label: "Image 1",
-    },
-    {
-      id: 2,
-      src: "../../src/assets/images/img2.webp",
-      alt: "Image 2",
-      label: "Image 2",
-    },
-    {
-      id: 3,
-      src: "../../src/assets/images/img3.png",
-      alt: "Image 3",
-      label: "Image 3",
-    },
-  ];
-
-  const images2 = [
-    {
-      id: 0,
-      src: "../../src/assets/images/me1.webp",
-      alt: "Image 0",
-      label: "Image 0",
-    },
-    {
-      id: 1,
-      src: "../../src/assets/images/me2.png",
-      alt: "Image 1",
-      label: "Image 1",
-    },
-    {
-      id: 2,
-      src: "../../src/assets/images/me3.png",
-      alt: "Image 2",
-      label: "Image 2",
-    },
-  ];
 
   // FAQ section starts
   const questionStyle = {
@@ -397,7 +365,7 @@ const TransgenderArticle = () => {
             </div>
           </div>
         </div>
-        <Divider style={{ marginTop: "0.5rem" }} />
+        <Divider style={{ marginTop: "2rem" }} />
         {/* masturbation */}
         <Typography
           variant="h4"
@@ -484,10 +452,16 @@ const TransgenderArticle = () => {
           marginLeft="2rem"
           marginRight="1rem"
         >
-          <Typography variant="h6" color="textSecondary">
-            <InfoOutlined sx={{ marginRight: "0.5rem" }} />
-            Point 1
-          </Typography>
+          <Grid className={classes.icongrid}>
+            <PriorityHighIcon className={classes.icon} />
+            <Typography
+              variant="h6"
+              color="textSecondary"
+              fontFamily="Poppins, sans-serif"
+            >
+              Point1
+            </Typography>
+          </Grid>
           <Typography variant="body1" fontFamily="Poppins, sans-serif">
             Some people can and do develop an addiction to masturbation. You may be
             spending too much time masturbating if masturbation causes you to.
@@ -502,10 +476,16 @@ const TransgenderArticle = () => {
           marginTop="1rem"
           marginRight="1rem"
         >
-          <Typography variant="h6" color="textSecondary">
-            <InfoOutlined style={{ marginRight: "0.5rem" }} />
-            Point 2
-          </Typography>
+          <Grid className={classes.icongrid}>
+            <PriorityHighIcon className={classes.icon} />
+            <Typography
+              variant="h6"
+              color="textSecondary"
+              fontFamily="Poppins, sans-serif"
+            >
+              Point2
+            </Typography>
+          </Grid>
           <Typography variant="body1" fontFamily="Poppins, sans-serif">
             If you&apos;re worried you may have an addiction to masturbation, speak with
             your doctor or a counselor about ways to cut down on masturbating.
@@ -524,10 +504,16 @@ const TransgenderArticle = () => {
             <InfoOutlined style={{ marginRight: "0.5rem" }} />
             Point 3
           </Typography>
-          <Typography variant="body1" fontFamily="Poppins, sans-serif">
-            Talk therapy can help you manage your addiction. You could also cut down by
-            replacing masturbation with other activities.
-          </Typography>
+          <Grid className={classes.icongrid}>
+            <PriorityHighIcon className={classes.icon} />
+            <Typography
+              variant="h6"
+              color="textSecondary"
+              fontFamily="Poppins, sans-serif"
+            >
+              Point3
+            </Typography>
+          </Grid>
         </Box>
 
         {/* smaller points */}
@@ -766,7 +752,7 @@ const TransgenderArticle = () => {
           fontFamily=" Poppins, sans-serif"
         >
           <img
-            src="../../src/assets/images/gender-dysphoria.jpeg"
+            src="https://res.cloudinary.com/dwzws9wi7/image/upload/v1689197242/LetsNormalizeIt_Articles/ll8yknlxdy7hgrfxsd5q.jpg"
             align="right"
             alt="gender dysphoria"
           ></img>

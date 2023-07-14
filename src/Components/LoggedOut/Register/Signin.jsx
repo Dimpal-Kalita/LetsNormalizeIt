@@ -17,6 +17,7 @@ import { useRhinoState } from "react-rhino";
 import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
+const BACKEND = import.meta.env.VITE_BACKEND_URL;
 
 const Signin = () => {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -32,7 +33,7 @@ const Signin = () => {
 
   const sendRequest = async (type = "login") => {
     const res = await axios
-      .post(`https://letsnormalizeit.onrender.com/api/user/${type}`, user)
+      .post(`${BACKEND}/api/user/${type}`, user)
       .catch((err) => console.log(err));
 
     const data = await res.data;
@@ -61,7 +62,7 @@ const Signin = () => {
       <CssBaseline />
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 14,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -133,6 +134,7 @@ const Signin = () => {
           </Grid>
         </Box>
       </Box>
+      <Grid marginTop="60px"></Grid>
     </Container>
   );
 };
