@@ -665,7 +665,7 @@ const TransgenderArticle = () => {
             <Grid item xs={12} sm={6} md={4}>
               <div className={classes.imageContainer}>
                 <img
-                  src="../../src/assets/images/mast1.jpeg"
+                  src="https://res.cloudinary.com/dwzws9wi7/image/upload/v1689197243/LetsNormalizeIt_Articles/ewxflkcsddfkoubobfdh.jpg"
                   alt="Image1"
                   className={classes.image}
                 />
@@ -674,7 +674,7 @@ const TransgenderArticle = () => {
             <Grid item xs={12} sm={6} md={4}>
               <div className={classes.imageContainer}>
                 <img
-                  src="../../src/assets/images/mast2.png"
+                  src="https://res.cloudinary.com/dwzws9wi7/image/upload/v1689197243/LetsNormalizeIt_Articles/nyz3nygxbanorrkq0bzw.png"
                   alt="Image2"
                   className={classes.image}
                 />
@@ -683,7 +683,7 @@ const TransgenderArticle = () => {
             <Grid item xs={12} sm={6} md={4}>
               <div className={classes.imageContainer}>
                 <img
-                  src="../../src/assets/images/mast3.jpeg"
+                  src="https://res.cloudinary.com/dwzws9wi7/image/upload/v1689197243/LetsNormalizeIt_Articles/wob82la5cvyzsihh4sfu.jpg"
                   alt="Image3"
                   className={classes.image}
                 />
