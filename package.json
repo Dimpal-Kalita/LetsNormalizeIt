@@ -14,10 +14,28 @@
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@material-ui/lab": "4.0.0-alpha.61",
+    "@material-ui/styles": "^4.11.5",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.5",
+    "@mui/styles": "^5.13.2",
     "@vitejs/plugin-react": "^2.2.0",
+    "axios": "^1.4.0",
+    "dotenv": "^16.3.1",
+    "lodash": "^4.17.21",
+    "openai": "^3.3.0",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.9.0",
+    "react-image-gallery": "^1.2.12",
+    "react-image-magnify": "^2.7.4",
+    "react-rhino": "^2.1.5",
     "react-router-dom": "^6.4.3",
+    "read-more-react": "^1.0.10",
+    "styled-components": "6.0.0-rc.3",
     "vite": "^3.2.3"
   },
   "devDependencies": {

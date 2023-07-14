@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+
+import { RhinoProvider } from "react-rhino";
+
 import App from "./App";
 import "./index.scss";
 
+const store = {
+  id: "",
+};
+
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <RhinoProvider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </RhinoProvider>
 );

@@ -46,7 +46,7 @@
     "newline-per-chained-call": 0,
     "no-confusing-arrow": 0,
     "no-console": 1,
-    "no-unused-vars": 2,
+    "no-unused-vars": 1,
     "no-use-before-define": 0,
     "no-restricted-syntax": 0,
     "no-nested-ternary": 0,
@@ -81,6 +81,7 @@
     "jsx-a11y/role-has-required-aria-props": 2,
     "jsx-a11y/role-supports-aria-props": 2,
     "react-hooks/rules-of-hooks": 2,
+    "no-underscore-dangle": 0,
     "check-file/filename-naming-convention": [
       2,
       {
