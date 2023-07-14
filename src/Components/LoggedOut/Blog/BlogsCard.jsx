@@ -18,6 +18,8 @@ import axios from "axios";
 import { useRhinoValue } from "react-rhino";
 import ReadMoreReact from "read-more-react";
 
+const BACKEND = import.meta.env.VITE_BACKEND_URL;
+
 const SBox = styled(Box)`
   .read-more-button {
     color: #3f51b5;
@@ -26,6 +28,11 @@ const SBox = styled(Box)`
       cursor: pointer;
     }
   }
+`;
+
+const CardHeader1 = styled(Box)`
+  font-family: "Poppins,sans-serif";
+  font-weight: 600;
 `;
 
 const Blog = (prop) => {
@@ -40,7 +47,7 @@ const Blog = (prop) => {
   };
   const deleteRequest = async () => {
     const res = await axios
-      .delete(`https://letsnormalizeit.onrender.com/api/blog/${id}`)
+      .delete(`${BACKEND}/api/blog/${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;
@@ -106,18 +113,20 @@ const Blog = (prop) => {
             </IconButton>
           </Box>
         )}
-        <CardHeader
-          avatar={
-            <Avatar
-              //     className={classes.font}
-              sx={{ bgcolor: "red" }}
-              aria-label="recipe"
-            >
-              {userName ? userName.charAt(0) : ""}
-            </Avatar>
-          }
-          title={title}
-        />
+        <CardHeader1>
+          <CardHeader
+            avatar={
+              <Avatar
+                //     className={classes.font}
+                sx={{ bgcolor: "red" }}
+                aria-label="recipe"
+              >
+                {userName ? userName.charAt(0) : ""}
+              </Avatar>
+            }
+            title={title}
+          />
+        </CardHeader1>
         <CardMedia component="img" height="180" image={image} alt="blog image" />
 
         <CardContent>

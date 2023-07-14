@@ -24,12 +24,8 @@ const navItems = [
     path: "/",
   },
   {
-    name: "Blog",
+    name: "Blogs",
     path: "/blog",
-  },
-  {
-    name: "Updates",
-    path: "https://www.cdc.gov/sexualhealth/Default.html",
   },
   {
     name: "Signin",

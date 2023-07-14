@@ -18,6 +18,8 @@ import axios from "axios";
 import { useRhinoValue } from "react-rhino";
 import ReadMoreReact from "read-more-react";
 
+const BACKEND = import.meta.env.VITE_BACKEND_URL;
+
 const SBox = styled(Box)`
   .read-more-button {
     color: #3f51b5;
@@ -40,7 +42,7 @@ const Blog = (prop) => {
   };
   const deleteRequest = async () => {
     const res = await axios
-      .delete(`https://letsnormalizeit.onrender.com/api/blog/${id}`)
+      .delete(`${BACKEND}/api/blog/${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;

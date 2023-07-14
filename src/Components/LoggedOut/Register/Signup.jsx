@@ -17,6 +17,7 @@ import { LockOutlined } from "@mui/icons-material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useRhinoState } from "react-rhino";
+const BACKEND = import.meta.env.VITE_BACKEND_URL;
 
 const Signup = () => {
   const [fill, setfill] = useState(false);
@@ -35,7 +36,7 @@ const Signup = () => {
 
   const sendRequest = async (type = "signup") => {
     const res = await axios
-      .post(`https://letsnormalizeit.onrender.com/api/user/${type}`, user)
+      .post(`${BACKEND}/api/user/${type}`, user)
       .catch((err) => console.log(err));
 
     const data = await res.data;

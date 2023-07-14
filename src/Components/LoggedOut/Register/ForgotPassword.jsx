@@ -12,6 +12,7 @@ import {
 import { LockOutlined } from "@mui/icons-material";
 
 import axios from "axios";
+const BACKEND = import.meta.env.VITE_BACKEND_URL;
 
 const ForgotPassword = () => {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -23,7 +24,7 @@ const ForgotPassword = () => {
 
   const sendRequest = async (type = "UpdatePassword") => {
     const res = await axios
-      .post(`https://letsnormalizeit.onrender.com/api/user/${type}`, user)
+      .post(`${BACKEND}/api/user/${type}`, user)
       .catch((err) => console.log(err));
 
     const data = await res.data;

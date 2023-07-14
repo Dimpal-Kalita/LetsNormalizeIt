@@ -4,6 +4,7 @@ import axios from "axios";
 import { Box, styled, Typography } from "@mui/material";
 import { useRhinoValue } from "react-rhino";
 import Blog from "./BlogsCard";
+const BACKEND = import.meta.env.VITE_BACKEND_URL;
 
 const Image = styled(Box)`
   width: 100%;
@@ -20,15 +21,14 @@ const Heading = styled(Typography)`
   font-size: 70px;
   color: #ffffff;
   line-height: 1;
+  font-family: "Poppins,sans-serif";
 `;
 
 const MyBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const id = useRhinoValue("id");
   const sendRequest = async () => {
-    const res = await axios
-      .get("https://letsnormalizeit.onrender.com/api/blog")
-      .catch((err) => console.log(err));
+    const res = await axios.get(`${BACKEND}/api/blog`).catch((err) => console.log(err));
     const data = await res.data;
     return data;
   };

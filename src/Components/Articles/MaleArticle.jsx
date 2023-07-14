@@ -12,8 +12,11 @@ import {
   Divider,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { ArrowBackIos, ArrowForwardIos, InfoOutlined } from "@mui/icons-material";
+import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
+import images from "../../db/images.json";
+import images2 from "../../db/images2.json";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -95,6 +98,13 @@ const useStyles = makeStyles(() => ({
     right: 100,
     zIndex: 1000,
   },
+  icongrid: {
+    display: "flex",
+    alignItems: "center",
+  },
+  icon: {
+    marginRight: "0.1rem",
+  },
 }));
 
 const MaleArticle = () => {
@@ -107,48 +117,6 @@ const MaleArticle = () => {
     marginLeft: "3rem",
   };
   const classes = useStyles();
-
-  const images = [
-    {
-      id: 1,
-      src: "../../src/assets/images/img1.jpeg",
-      alt: "Image 1",
-      label: "Image 1",
-    },
-    {
-      id: 2,
-      src: "../../src/assets/images/img2.webp",
-      alt: "Image 2",
-      label: "Image 2",
-    },
-    {
-      id: 3,
-      src: "../../src/assets/images/img3.png",
-      alt: "Image 3",
-      label: "Image 3",
-    },
-  ];
-
-  const images2 = [
-    {
-      id: 0,
-      src: "../../src/assets/images/me1.webp",
-      alt: "Image 0",
-      label: "Image 0",
-    },
-    {
-      id: 1,
-      src: "../../src/assets/images/me2.png",
-      alt: "Image 1",
-      label: "Image 1",
-    },
-    {
-      id: 2,
-      src: "../../src/assets/images/me3.png",
-      alt: "Image 2",
-      label: "Image 2",
-    },
-  ];
 
   // FAQ section
   const questionStyle = {
@@ -314,8 +282,6 @@ const MaleArticle = () => {
           decisions if you&apos;re well-informed.
         </Typography>
 
-        {/* problem */}
-
         <div className={classes.root}>
           <Grid style={{ display: "flex", flexDirection: "row" }} container spacing={2}>
             {images.map((image) => (
@@ -397,7 +363,7 @@ const MaleArticle = () => {
           </div>
         </div>
 
-        <Divider style={{ marginTop: "0.5rem" }} />
+        <Divider style={{ marginTop: "2rem" }} />
 
         {/* masturbation */}
         <Typography
@@ -485,10 +451,16 @@ const MaleArticle = () => {
           marginLeft="2rem"
           marginRight="1rem"
         >
-          <Typography variant="h6" color="textSecondary">
-            <InfoOutlined sx={{ marginRight: "0.5rem" }} />
-            Point 1
-          </Typography>
+          <Grid className={classes.icongrid}>
+            <PriorityHighIcon className={classes.icon} />
+            <Typography
+              variant="h6"
+              color="textSecondary"
+              fontFamily="Poppins, sans-serif"
+            >
+              Point1
+            </Typography>
+          </Grid>
           <Typography variant="body1" fontFamily="Poppins, sans-serif">
             Some people can and do develop an addiction to masturbation. You may be
             spending too much time masturbating if masturbation causes you to.
@@ -503,10 +475,16 @@ const MaleArticle = () => {
           marginTop="1rem"
           marginRight="1rem"
         >
-          <Typography variant="h6" color="textSecondary">
-            <InfoOutlined style={{ marginRight: "0.5rem" }} />
-            Point 2
-          </Typography>
+          <Grid className={classes.icongrid}>
+            <PriorityHighIcon className={classes.icon} />
+            <Typography
+              variant="h6"
+              color="textSecondary"
+              fontFamily="Poppins, sans-serif"
+            >
+              Point2
+            </Typography>
+          </Grid>
           <Typography variant="body1" fontFamily="Poppins, sans-serif">
             If you&apos;re worried you may have an addiction to masturbation, speak with
             your doctor or a counselor about ways to cut down on masturbating.
@@ -521,10 +499,16 @@ const MaleArticle = () => {
           marginTop="1rem"
           marginRight="1rem"
         >
-          <Typography variant="h6" color="textSecondary">
-            <InfoOutlined style={{ marginRight: "0.5rem" }} />
-            Point 3
-          </Typography>
+          <Grid className={classes.icongrid}>
+            <PriorityHighIcon className={classes.icon} />
+            <Typography
+              variant="h6"
+              color="textSecondary"
+              fontFamily="Poppins, sans-serif"
+            >
+              Point1
+            </Typography>
+          </Grid>
           <Typography variant="body1" fontFamily="Poppins, sans-serif">
             Talk therapy can help you manage your addiction. You could also cut down by
             replacing masturbation with other activities.
@@ -680,7 +664,7 @@ const MaleArticle = () => {
             <Grid item xs={12} sm={6} md={4}>
               <div className={classes.imageContainer}>
                 <img
-                  src="../../src/assets/images/mast1.jpeg"
+                  src="https://res.cloudinary.com/dwzws9wi7/image/upload/v1689197243/LetsNormalizeIt_Articles/ewxflkcsddfkoubobfdh.jpg"
                   alt="Image1"
                   className={classes.image}
                 />
@@ -689,7 +673,7 @@ const MaleArticle = () => {
             <Grid item xs={12} sm={6} md={4}>
               <div className={classes.imageContainer}>
                 <img
-                  src="../../src/assets/images/mast2.png"
+                  src="https://res.cloudinary.com/dwzws9wi7/image/upload/v1689197243/LetsNormalizeIt_Articles/nyz3nygxbanorrkq0bzw.png"
                   alt="Image2"
                   className={classes.image}
                 />
@@ -698,7 +682,7 @@ const MaleArticle = () => {
             <Grid item xs={12} sm={6} md={4}>
               <div className={classes.imageContainer}>
                 <img
-                  src="../../src/assets/images/mast3.jpeg"
+                  src="https://res.cloudinary.com/dwzws9wi7/image/upload/v1689197243/LetsNormalizeIt_Articles/wob82la5cvyzsihh4sfu.jpg"
                   alt="Image3"
                   className={classes.image}
                 />
@@ -846,7 +830,7 @@ const MaleArticle = () => {
             <Grid item xs={12} sm={6} md={4}>
               <div className={classes.imageContainer3}>
                 <img
-                  src="../../src/assets/images/flacid.webp"
+                  src="https://res.cloudinary.com/dwzws9wi7/image/upload/v1689197241/LetsNormalizeIt_Articles/mxhkqtce2yfbkgc1nzh2.webp"
                   alt="Image1"
                   className={classes.image}
                 />
@@ -855,7 +839,7 @@ const MaleArticle = () => {
             <Grid item xs={12} sm={6} md={4}>
               <div className={classes.imageContainer3}>
                 <img
-                  src="../../src/assets/images/flacid1.webp"
+                  src="https://res.cloudinary.com/dwzws9wi7/image/upload/v1689197242/LetsNormalizeIt_Articles/utepoxokmwu0hyb6pye2.webp"
                   alt="Image2"
                   className={classes.image}
                 />
@@ -864,7 +848,7 @@ const MaleArticle = () => {
             <Grid item xs={12} sm={6} md={4}>
               <div className={classes.imageContainer3}>
                 <img
-                  src="../../src/assets/images/flacid2.jpg"
+                  src="https://res.cloudinary.com/dwzws9wi7/image/upload/v1689197242/LetsNormalizeIt_Articles/qap2m2t9sztyq9kzdzbg.jpg"
                   alt="Image3"
                   className={classes.image}
                 />
@@ -960,7 +944,7 @@ const MaleArticle = () => {
             <Grid item xs={12} sm={6} md={4}>
               <div className={classes.imageContainer3}>
                 <img
-                  src="../../src/assets/images/flacid3.jpeg"
+                  src="https://res.cloudinary.com/dwzws9wi7/image/upload/v1689197241/LetsNormalizeIt_Articles/wlxf2jzvo2jvt1yc32rf.jpg"
                   alt="Image1"
                   className={classes.image}
                 />
@@ -969,7 +953,7 @@ const MaleArticle = () => {
             <Grid item xs={12} sm={6} md={4}>
               <div className={classes.imageContainer3}>
                 <img
-                  src="../../src/assets/images/flacid4.png"
+                  src="https://res.cloudinary.com/dwzws9wi7/image/upload/v1689197242/LetsNormalizeIt_Articles/dalklrswitlbxkaz8o1z.png"
                   alt="Image2"
                   className={classes.image}
                 />
@@ -978,7 +962,7 @@ const MaleArticle = () => {
             <Grid item xs={12} sm={6} md={4}>
               <div className={classes.imageContainer3}>
                 <img
-                  src="../../src/assets/images/flacid5.webp"
+                  src="https://res.cloudinary.com/dwzws9wi7/image/upload/v1689197242/LetsNormalizeIt_Articles/oiulwflxkzlfghd1ihxf.webp"
                   alt="Image3"
                   className={classes.image}
                 />

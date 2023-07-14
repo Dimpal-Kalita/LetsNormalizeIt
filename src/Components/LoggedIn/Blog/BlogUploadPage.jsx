@@ -17,6 +17,8 @@ import { useNavigate } from "react-router-dom";
 
 import imageData from "../../../db/imageData.json";
 
+const BACKEND = import.meta.env.VITE_BACKEND_URL;
+
 const StyledContainer = styled(Container)`
   margin-top: 5rem;
   display: flex;
@@ -53,6 +55,7 @@ const Heading = styled(Typography)`
   font-size: 70px;
   color: #ffffff;
   line-height: 1;
+  font-family: "Poppins,sans-serif";
 `;
 
 const BlogUploadPage = () => {
@@ -109,9 +112,7 @@ const BlogUploadPage = () => {
       user: id,
     };
 
-    axios
-      .post("https://letsnormalizeit.onrender.com/api/blog/add", blogData)
-      .catch((e) => setError(e.message));
+    axios.post(`${BACKEND}/api/blog/add`, blogData).catch((e) => setError(e.message));
     navigate("/myblog");
   };
 
