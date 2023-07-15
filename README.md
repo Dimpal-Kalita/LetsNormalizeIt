@@ -1,5 +1,5 @@
 ## LetsNormalizeIt
-It's a website intended specifically to create awareness among all the genders regarding sexual hygiene. Through this website, users will be able to clarify their doubts or seek help regarding any sensitive issue that they might otherwise feel uncomfortable in discussing with someone physically. 
+It's a website intended specifically to create awareness among all the genders on sexual hygiene. Through this website, users will be able to clarify their doubts or seek help regarding any sensitive issue that they might otherwise feel uncomfortable in discussing with someone physically. 
 
 ### Some of the key features of the website include:
 
