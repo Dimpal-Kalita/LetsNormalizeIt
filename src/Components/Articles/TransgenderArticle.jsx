@@ -511,7 +511,8 @@ const TransgenderArticle = () => {
               color="textSecondary"
               fontFamily="Poppins, sans-serif"
             >
-              Point3
+              Talk therapy can help you manage your addiction. You could also cut down by
+              replacing masturbation with other activities.
             </Typography>
           </Grid>
         </Box>

@@ -506,7 +506,7 @@ const MaleArticle = () => {
               color="textSecondary"
               fontFamily="Poppins, sans-serif"
             >
-              Point1
+              Point3
             </Typography>
           </Grid>
           <Typography variant="body1" fontFamily="Poppins, sans-serif">
