@@ -25,7 +25,7 @@ const systemMessage = {
   content:
     "Explain query such that it helps in maintaining users health and make sure every query has a Fact related to hygiene also consider your name as sassy ",
 };
-
+// changes with api key of bot
 const BotChat = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userInput, setUserInput] = useState("");
