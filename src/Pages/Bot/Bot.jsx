@@ -14,18 +14,19 @@ import {
 import ChatIcon from "@mui/icons-material/Chat";
 import SendIcon from "@mui/icons-material/Send";
 import uniqueId from "lodash/uniqueId";
-
 import AssistantIcon from "@mui/icons-material/Assistant";
 import PersonIcon from "@mui/icons-material/Person";
+import { Groq } from "groq-sdk";
 
-const API_KEY = import.meta.env.VITE_OPENAI_API_BOT;
+const API_KEY = import.meta.env.VITE_GROQ_API_KEY;
+const groq = new Groq({ apiKey: API_KEY, dangerouslyAllowBrowser: true });
 
 const systemMessage = {
   role: "system",
   content:
     "Explain query such that it helps in maintaining users health and make sure every query has a Fact related to hygiene also consider your name as sassy ",
 };
-// changes with api key of bot
+
 const BotChat = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userInput, setUserInput] = useState("");
@@ -49,7 +50,7 @@ const BotChat = () => {
     },
   ]);
 
-  const askGPT = async (prompt) => {
+  const askGroq = async (prompt) => {
     setLoading(true);
     const apiMessage = prompt.map((messageObject) => {
       const role = messageObject.sender === "Assistant" ? "assistant" : "user";
@@ -57,35 +58,31 @@ const BotChat = () => {
     });
 
     const apiRequestBody = {
-      model: "gpt-3.5-turbo",
-      messages: [
-        systemMessage, // The system message DEFINES the logic of our chatGPT
-        ...apiMessage, // The messages from our chat with ChatGPT
-      ],
+      model: "llama3-8b-8192",
+      messages: [systemMessage, ...apiMessage],
+      temperature: 1,
+      max_tokens: 1024,
+      top_p: 1,
+      stream: false,
+      stop: null,
     };
 
-    await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(apiRequestBody),
-    })
-      .then((data) => {
-        return data.json();
-      })
-      .then((data) => {
-        setMessages([
-          ...prompt,
-          {
-            message: data.choices[0].message.content,
-            sender: "Assistant",
-          },
-        ]);
-        setLoading(false);
-      }, 5000);
-    setLoading(false);
+    try {
+      const response = await groq.chat.completions.create(apiRequestBody);
+      const assistantMessage = response.choices[0]?.message?.content || "";
+
+      setMessages([
+        ...prompt,
+        {
+          message: assistantMessage,
+          sender: "Assistant",
+        },
+      ]);
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleSendData = async (e) => {
@@ -95,7 +92,7 @@ const BotChat = () => {
       { message: userInput, sentTime: "just now", sender: "You" },
     ];
     setMessages(newMessages);
-    await askGPT(newMessages);
+    await askGroq(newMessages);
     setUserInput("");
   };
 
